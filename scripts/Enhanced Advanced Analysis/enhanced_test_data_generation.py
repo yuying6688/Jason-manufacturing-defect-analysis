@@ -1,7 +1,7 @@
-import mysql.connector
 import random
+
+import mysql.connector
 from faker import Faker
-from sqlalchemy import text
 
 # MySQL connection setup
 db_config = {
@@ -16,7 +16,6 @@ try:
     conn = mysql.connector.connect(**db_config)
     cursor = conn.cursor()
     print("Connected to the database successfully.")
-
 
     cursor.execute("DELETE FROM defect_data;")
     # Reset AUTO_INCREMENT to 1
@@ -39,19 +38,14 @@ try:
     print("............ Table parameters has been emptied.")
     conn.commit()
 
-
     # Truncate table parameters
-     # cursor.execute("TRUNCATE TABLE parameters;")
-
+    # cursor.execute("TRUNCATE TABLE parameters;")
 
     # Truncate table defect_data
     # cursor.execute("TRUNCATE TABLE defect_data;")
 
-
     # Truncate table defects
     # cursor.execute("TRUNCATE TABLE defects;")
-
-
 
     # Commit the changes (not strictly necessary for TRUNCATE, but a good practice)
     conn.commit()
@@ -70,14 +64,16 @@ def generate_parameters():
     values = ["High", "Low"]
     for parameter in parameters:
         for value in values:
-            cursor.execute("INSERT INTO parameters (parameter_name, parameter_value) VALUES (%s, %s)", (parameter, value))
+            cursor.execute("INSERT INTO parameters (parameter_name, parameter_value) VALUES (%s, %s)",
+                           (parameter, value))
     conn.commit()
     print("Parameters inserted.")
+
 
 def generate_defect_data(num_records=50):
     for _ in range(num_records):
         parameter_value1 = round(random.uniform(50.0, 100.0), 2)  # Simulate temperature or pressure
-        parameter_value2 = round(random.uniform(30.0, 80.0), 2)   # Simulate humidity
+        parameter_value2 = round(random.uniform(30.0, 80.0), 2)  # Simulate humidity
         defect_type = random.choice(["Crack", "Discoloration", "Size Variance"])
         cursor.execute(
             "INSERT INTO defect_data (parameter_value1, parameter_value2, defect_type) VALUES (%s, %s, %s)",
@@ -85,6 +81,7 @@ def generate_defect_data(num_records=50):
         )
     conn.commit()
     print(f"{num_records} defect_data records inserted.")
+
 
 def generate_defects(num_records=20):
     for _ in range(num_records):
@@ -94,7 +91,6 @@ def generate_defects(num_records=20):
         cursor.execute("INSERT INTO defects (defect_type, parameter_id) VALUES (%s, %s)", (defect_type, parameter_id))
     conn.commit()
     print(f"{num_records} defect records inserted.")
-
 
 
 # Main execution
@@ -109,6 +105,7 @@ def main():
         cursor.close()
         conn.close()
         print("Database connection closed.")
+
 
 if __name__ == "__main__":
     main()

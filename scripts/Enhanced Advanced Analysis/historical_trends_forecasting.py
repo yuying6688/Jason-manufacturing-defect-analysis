@@ -1,17 +1,15 @@
 import os
 import smtplib
 from email import encoders
+from email.mime.base import MIMEBase
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 
 import matplotlib.pyplot as plt
 import pandas as pd
 from fpdf import FPDF
 from sqlalchemy import create_engine
 from statsmodels.tsa.arima.model import ARIMA
-import smtplib
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
-from email.mime.base import MIMEBase
-from email import encoders
 
 
 # Load defect data from MySQL

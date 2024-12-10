@@ -15,6 +15,8 @@ db_config = {
     "password": "12345678",
     "database": "advanced_defect_analysis"
 }
+
+
 def fetch_data():
     conn = mysql.connector.connect(**db_config)
     query = """

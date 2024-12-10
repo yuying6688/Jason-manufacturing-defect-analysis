@@ -1,5 +1,6 @@
 -- Create the database
 CREATE DATABASE IF NOT EXISTS advanced_defect_analysis;
+
 USE advanced_defect_analysis;
 
 -- Table to store manufacturing parameters

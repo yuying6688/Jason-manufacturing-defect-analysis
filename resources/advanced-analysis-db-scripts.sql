@@ -1,4 +1,3 @@
-USE manufacturing;
 
 -- Step 1: Create the `defect_analysis` Schema
 CREATE SCHEMA IF NOT EXISTS defect_analysis;

@@ -2,6 +2,7 @@ import os
 import random
 import time
 
+
 def simulate_real_time_monitoring():
     THRESHOLD_TEMP = 90.0
     THRESHOLD_HUMIDITY = 75.0
@@ -17,7 +18,7 @@ def simulate_real_time_monitoring():
         report_path = os.path.join("reports", log_file)
         with open(report_path, "a") as log:
 
-        # with open(log_file, "a") as log:
+            # with open(log_file, "a") as log:
             if temperature > THRESHOLD_TEMP or humidity > THRESHOLD_HUMIDITY:
                 alert = f"ALERT: High values detected! Temperature: {temperature}, Humidity: {humidity}"
                 print(alert)
@@ -29,6 +30,7 @@ def simulate_real_time_monitoring():
 
         # Wait before generating the next data point
         time.sleep(3)
+
 
 if __name__ == "__main__":
     simulate_real_time_monitoring()

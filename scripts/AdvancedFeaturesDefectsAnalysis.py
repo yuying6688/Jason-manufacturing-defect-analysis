@@ -1,12 +1,12 @@
-import pymysql
-from sqlalchemy import create_engine
-import pandas as pd
-from scipy.stats import chi2_contingency
-from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import accuracy_score
 import pickle
 import time
+
+import pandas as pd
+from scipy.stats import chi2_contingency
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score
+from sklearn.model_selection import train_test_split
+from sqlalchemy import create_engine
 
 # from SimpleDefectAnalysis import connection  !!!!!!!
 
@@ -28,18 +28,18 @@ contingency_table = pd.crosstab(data['defect_type'], data['parameter_value'])
 # Chi-square test for independence
 chi2, p, dof, expected = chi2_contingency(contingency_table)
 
-print("  \n chi2 = " , chi2)
-print("  p = " , p)
-print("  dof = " , dof)
-print("  expected = \n" , expected)
+print("  \n chi2 = ", chi2)
+print("  p = ", p)
+print("  dof = ", dof)
+print("  expected = \n", expected)
 
 if p < 0.05:
     print("Significant correlation found between defect type and parameter value.\n")
 else:
     print("No significant correlation found.\n")
 
-
-print(" =======>  Feature 2: Predict potential defects based on input parameters using a simple machine learning model\n")
+print(
+    " =======>  Feature 2: Predict potential defects based on input parameters using a simple machine learning model\n")
 # Load data
 query = """
 SELECT parameter_value1, parameter_value2, defect_type
@@ -66,8 +66,9 @@ with open('defect_predictor.pkl', 'wb') as file:
     pickle.dump(model, file)
 print(f" =======> Save model for reuse ----> defect_predictor.pkl\n")
 
-
 print(" =======>  Feature 3: Real-Time Monitoring Fetch live data and display defect trends.\n")
+
+
 def fetch_real_time_data():
     engine = create_engine("mysql+pymysql://root:12345678@localhost/advanced_defect_analysis")
 
@@ -80,5 +81,6 @@ def fetch_real_time_data():
         print(data)
         time.sleep(10)  # Refresh every 10 seconds
     connection.close()
+
 
 fetch_real_time_data()

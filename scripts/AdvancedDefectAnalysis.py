@@ -1,9 +1,8 @@
+import os
+
+import matplotlib.pyplot as plt
 import pandas as pd
 from sqlalchemy import create_engine, text
-import matplotlib.pyplot as plt
-import xlsxwriter
-import os
-from flask import Flask, render_template
 
 # Database connection
 engine = create_engine('mysql+pymysql://root:12345678@localhost/defect_analysis')
@@ -33,6 +32,8 @@ print("\n =============> Calculate Defect Frequency:\n", frequency)
 # Visualization
 # Create a bar chart of defect frequencies:
 print("\n =============> Visualization Create a bar chart of defect frequencies ...............\n")
+
+
 def plot_defect_frequency(data):
     data.plot(kind='bar', color='skyblue')
     plt.title('Defect Frequency')
@@ -40,8 +41,8 @@ def plot_defect_frequency(data):
     plt.ylabel('Count')
     plt.show()
 
-plot_defect_frequency(frequency)
 
+plot_defect_frequency(frequency)
 
 # Create a new Excel file and add a worksheet
 # print("\n =============> Create a new Excel file and add a worksheet ...............\n")

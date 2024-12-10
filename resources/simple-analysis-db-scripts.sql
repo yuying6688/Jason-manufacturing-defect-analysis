@@ -1,3 +1,9 @@
+CREATE SCHEMA IF NOT EXISTS manufacturing;
+
+OR
+
+CREATE DATABASE IF NOT EXISTS manufacturing;
+
 USE manufacturing;
 
 CREATE TABLE defect_logs (
