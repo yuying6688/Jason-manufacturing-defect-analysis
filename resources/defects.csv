@@ -1,0 +1,8 @@
+id,product_id,defect_type,quantity,defect_date,severity_level,description
+7,101,Scratches,15,"2024-12-01 10:30:00",Low,"Minor scratches on surface"
+8,102,Cracks,5,"2024-12-01 11:00:00",High,"Cracks found near hinge"
+9,103,Discoloration,10,"2024-12-01 12:15:00",Medium,"Slight discoloration on panel"
+10,103,Discoloration,12,"2025-12-02 12:15:00",Medium,"Slight discoloration on side panel"
+11,101,Dents,2,"2024-12-01 13:45:00",High,"Dents on the bottom panel"
+12,104,Dents,6,"2025-12-01 13:45:00",Low,"Dents on the side panel"
+13,103,Dents,3,"2025-12-01 13:45:00",Low,"Dents on the side panel"
